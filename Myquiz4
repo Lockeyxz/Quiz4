@@ -1,0 +1,27 @@
+section .data
+        x DD 7
+        y DD 21
+        z DD 19
+section .text
+        global _start
+
+_start:
+    mov eax, [x]
+    mov ebx, [y]
+    mov ecx, [z]
+
+    call add_three_numbers
+
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80
+
+add_three_numbers:
+    add eax, ebx
+    add eax, ecx
+    mov [result], eax
+
+    ret
+
+section .bss
+        result resd 1
